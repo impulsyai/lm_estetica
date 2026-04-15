@@ -5,45 +5,45 @@
 
 const siteConfig = {
     brand: {
-        name: "Thamires Coelho",
-        tagline: "Lipo de Papada HD & Bichectomia",
-        logoTextTop: "Thamires",
-        logoTextBottom: "COELHO",
-        logoSubText: "ESTÉTICA AVANÇADA OROFACIAL"
+        name: "Larisse Machado",
+        tagline: "Mestre em Sobrancelhas",
+        logoTextTop: "LM",
+        logoTextBottom: "ESTÉTICA",
+        logoSubText: "CLÍNICA DE ESTÉTICA AVANÇADA"
     },
     contact: {
-        phone: "5577998621838",
-        whatsapp: "https://wa.me/5577998621838",
-        instagram: "https://instagram.com/drathamirescoelho",
-        googleMaps: "https://maps.app.goo.gl/B9Z2JkzVp7R4Z4Bv8" // Placeholder maps link for Vitoria da Conquista
+        phone: "5575999999999", // Placeholder, will fix later if user provides
+        whatsapp: "https://wa.me/5575999999999",
+        instagram: "https://instagram.com/lm_estetica_studioo",
+        googleMaps: "https://maps.google.com/?q=Feira+de+Santana%2C+Bahia" 
     },
     theme: {
         palette: {
-            primary: "#b08d57", // Ouro Envelhecido (Premium)
+            primary: "#146c64", // Verde Teal da logo
             onPrimary: "#ffffff",
-            primaryContainer: "#e6cc9a",
-            secondary: "#2c241d", // Marrom Café Escuro
+            primaryContainer: "#a7d2cc",
+            secondary: "#e0aeb4", // Rose/Rosa da logo e instagram
             onSecondary: "#ffffff",
-            surface: "#fdfbf9", // Bege Nude Claro
+            surface: "#fdfbf9", // Fundo claro 
             onSurface: "#1a1c1c",
             outline: "#8a7a6e"
         },
         fonts: {
-            headline: "'Noto Serif', serif",
-            body: "'Manrope', sans-serif"
+            headline: "'Outfit', sans-serif",
+            body: "'Inter', sans-serif"
         }
     },
     hero: {
-        title: "O Segredo da Mandíbula Definida: Transformação Natural com o <span class='text-primary italic'>Método TC</span>.",
-        description: "Protocolos exclusivos e tecnologia avançada para realçar sua beleza natural sem perder a essência. Especialista em Lipo de Papada HD e Bichectomia.",
-        ctaMain: "Conhecer o Método TC",
-        ctaSecondary: "Agendar minha avaliação",
-        badge: "Dra. Thamires Coelho - Harmonização Orofacial"
+        title: "Você é seu projeto <span class='text-primary italic'>mais importante</span>.",
+        description: "Clínica de Estética e Micropigmentação Premium. Realçando sua beleza com naturalidade e os tratamentos mais avançados do mercado.",
+        ctaMain: "Agendar Avaliação",
+        ctaSecondary: "Ver todos os serviços",
+        badge: "LM Estética - Mestre em Sobrancelhas"
     },
     sections: {
         philosophy: {
-            title: "Beleza que respeita sua individualidade.",
-            text: "O Método TC foi desenvolvido para entregar resultados de alta performance com a máxima naturalidade. Aqui, cada detalhe do seu rosto é planejado para um equilíbrio perfeito."
+            title: "Tratamentos que elevam sua autoestima.",
+            text: "Desenvolvemos protocolos únicos usando tecnologia de ponta e maestria para entregar resultados impressionantes sem perder a naturalidade. Cuidar de você é o nosso propósito."
         }
     }
 };
