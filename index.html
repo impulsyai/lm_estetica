@@ -666,14 +666,16 @@
             }
         }
 
-        function showTab(category, btn) {
+        function showTab(category, btn, userClick = true) {
             const container = document.getElementById('price-container');
             const btns = document.querySelectorAll('.tab-btn');
             
             if(btn) {
                 btns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                if(userClick) {
+                    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }
             }
             
             const fullList = servicesData[category] || [];
@@ -746,7 +748,7 @@
         }
 
         window.onload = () => {
-             showTab('sobrancelha', document.querySelector('.tab-btn'));
+             showTab('sobrancelha', document.querySelector('.tab-btn'), false);
              if(window.gsap) {
                  gsap.registerPlugin(ScrollTrigger);
                  gsap.to('.reveal-up', { opacity: 1, y: 0, duration: 1, stagger:0.1, scrollTrigger: { trigger: '.reveal-up', start: "top 95%" }});
