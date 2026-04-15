@@ -46,7 +46,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <style>
-        body { background-color: #fdfbf9; color: #1a1c1c; font-family: 'Manrope', sans-serif; overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { 
+            max-width: 100%; 
+            overflow-x: hidden; 
+            background: #fdfbf9; 
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
         .glass-header { background: rgba(253, 251, 249, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(20, 108, 100, 0.05); }
         .reveal-up { opacity: 0; transform: translateY(30px); }
         .tab-btn.active { background: #146c64; color: white; box-shadow: 0 10px 30px rgba(20, 108, 100, 0.2); }
@@ -159,6 +166,7 @@
             cursor: ew-resize;
             border: 4px solid #fdfbf9;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            touch-action: pan-y;
         }
         .compare-layer { position: absolute; inset: 0; }
         .compare-before { z-index: 2; clip-path: inset(0 50% 0 0); }
@@ -195,7 +203,7 @@
     </nav>
 
     <!-- HERO SECTION -->
-    <section class="relative min-h-screen flex items-center pt-24 px-6 lg:px-12 bg-bgLight">
+    <section class="relative min-h-screen flex items-center pt-24 px-6 lg:px-12 bg-bgLight overflow-hidden">
         <div class="absolute top-0 right-10 w-1/2 h-full bg-primary/5 rounded-l-[15rem] -z-10 translate-x-1/2 lg:translate-x-0"></div>
         <div class="container mx-auto grid lg:grid-cols-2 gap-16 items-center">
             <div id="hero-text" class="z-10 text-center lg:text-left">
@@ -217,7 +225,7 @@
         <div class="container mx-auto">
             <div class="text-center mb-24 reveal-up px-10">
                 <span class="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block mb-6 px-10">Resultados que Falam por Si</span>
-                <h2 class="font-serif text-5xl lg:text-7xl text-primary leading-tight italic px-10">Ciência & <span class="gold-foil">Transformação</span></h2>
+                <h2 class="font-serif text-5xl lg:text-7xl text-primary leading-tight italic px-4 md:px-10">Ciência & <span class="gold-foil">Transformação</span></h2>
                 <p class="text-gray-400 font-bold mt-8 tracking-widest text-[10px] uppercase">Arraste para o lado para ver a evolução</p>
             </div>
 
@@ -389,7 +397,7 @@
                 <p class="text-gray-400 font-bold mt-8 tracking-widest text-[10px] uppercase">Clique em um item para ver detalhes e agendar</p>
             </div>
 
-            <div class="bg-white rounded-[3.5rem] p-8 md:p-16 shadow-2xl border border-primary/5 reveal-up">
+            <div class="bg-white rounded-[2.5rem] md:rounded-[3.5rem] p-6 md:p-16 shadow-2xl border border-primary/5 reveal-up mx-auto overflow-hidden">
                 <div class="flex overflow-x-auto gap-3 mb-12 pb-6 no-scrollbar lg:justify-center border-b border-primary/5 px-6" id="tab-controls">
                     <button class="tab-btn whitespace-nowrap px-6 py-3.5 rounded-full border border-primary/10 text-[9px] font-bold uppercase tracking-[0.2em] transition-all" onclick="showTab('sobrancelha', this)">Sobrancelha</button>
                     <button class="tab-btn whitespace-nowrap px-6 py-3.5 rounded-full border border-primary/10 text-[9px] font-bold uppercase tracking-[0.2em] transition-all" onclick="showTab('remocao', this)">Laser</button>
@@ -483,40 +491,53 @@
         <div class="container mx-auto px-6 lg:px-12">
             <div class="grid lg:grid-cols-2 gap-20 items-center">
                 <div class="reveal-up">
-                    <span class="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block mb-6 px-10">Como Chegar</span>
-                    <h2 class="font-serif text-5xl lg:text-7xl text-primary mb-12 italic leading-tight px-10">Olhos D'Água.</h2>
-                    <div class="grid sm:grid-cols-2 gap-12 px-10 mb-10">
-                        <div class="space-y-4 border-l border-primary/20 pl-6">
-                            <h4 class="text-xs uppercase font-extrabold tracking-widest text-primary">Visita Presencial</h4>
-                            <p class="text-gray-500 font-bold leading-relaxed text-sm">Conjunto ACM, R. M, O-26<br>Feira de Santana - BA</p>
+                    <span class="text-primary font-bold uppercase tracking-[0.4em] text-[10px] block mb-6 px-10">Visite Nosso Studio</span>
+                    <h2 class="font-serif text-5xl lg:text-7xl text-primary mb-12 italic leading-tight px-10">Onde Estamos.</h2>
+                    <div class="grid sm:grid-cols-2 gap-12 px-10 mb-12">
+                        <div class="space-y-4 border-l-2 border-primary/20 pl-6">
+                            <h4 class="text-xs uppercase font-extrabold tracking-widest text-primary">Localização</h4>
+                            <p class="text-gray-500 font-bold leading-relaxed text-sm">Conjunto ACM, R. M, O-26<br>Olhos D'Água, Feira de Santana - BA</p>
                         </div>
-                        <div class="space-y-4 border-l border-primary/20 pl-6">
+                        <div class="space-y-4 border-l-2 border-primary/20 pl-6">
                             <h4 class="text-xs uppercase font-extrabold tracking-widest text-primary">Horários</h4>
-                            <p class="text-gray-500 font-bold leading-relaxed text-sm">Seg-Sex: 08h às 18h<br>Sáb: 08h às 13h</p>
+                            <p class="text-gray-500 font-bold leading-relaxed text-sm">Seg - Sex: 08:00 - 18:00<br>Sáb: 08:00 - 13:00</p>
                         </div>
+                    </div>
+
+                    <!-- Botões de Contato -->
+                    <div class="flex flex-wrap gap-4 px-10">
+                        <a href="https://api.whatsapp.com/message/C6XZSWTWFX52D1?autoload=1&app_absent=0" target="_blank" class="flex items-center gap-3 bg-primary/5 text-primary px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest border border-primary/10 hover:bg-primary hover:text-white transition-all">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="https://www.instagram.com/larissemachado_pmu" target="_blank" class="flex items-center gap-3 bg-primary/5 text-primary px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest border border-primary/10 hover:bg-primary hover:text-white transition-all">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                        <a href="mailto:lm_estetica_studio@hotmail.com" class="flex items-center gap-3 bg-primary/5 text-primary px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest border border-primary/10 hover:bg-primary hover:text-white transition-all">
+                            <i class="far fa-envelope"></i> E-mail
+                        </a>
                     </div>
                 </div>
                 <div class="reveal-up relative h-[500px] rounded-[3.5rem] overflow-hidden shadow-2xl border-8 border-white">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3856.381311362292!2d-40.833903623939904!3d-14.859941600642761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x714379e0fdb17a5:0xab7b3913480941d!2sLM%20Est%C3%A9tica%20Studio!5e0!3m2!1spt-BR!2sbr!4v1774999554740!5m2!1spt-BR!2sbr" class="w-full h-full grayscale hover:grayscale-0 transition-all duration-1000" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3856.381311362292!2d-40.833903623939904!3d-14.859941600642761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x714379e0fdb17a5:0xab7b3913480941d!2sLM%20Est%C3%A9tica%20Studio!5e0!3m2!1spt-BR!2sbr!4v1774999554740!5m2!1spt-BR!2sbr" class="w-full h-full shadow-inner" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- 📞 FOOTER ESTRATÉGICO -->
-    <footer class="bg-primaryDark text-white pt-32 pb-12 px-6 lg:px-12">
+    <footer class="bg-primaryDark text-white pt-24 pb-10 px-6 lg:px-12">
         <div class="container mx-auto">
             <!-- Mega CTA Section -->
-            <div class="text-center mb-32 reveal-up">
+            <div class="text-center mb-20 reveal-up">
                 <h2 class="font-serif text-4xl lg:text-7xl mb-12 leading-tight px-10">Agende sua avaliação agora e <br>comece sua <span class="gold-foil italic font-normal">transformação</span></h2>
                 <a href="https://api.whatsapp.com/message/C6XZSWTWFX52D1?autoload=1&app_absent=0" target="_blank" class="inline-flex items-center gap-4 bg-accent text-primaryDark px-12 py-6 rounded-full font-black text-xs uppercase tracking-widest hover:bg-white transition-all shadow-2xl">
                     Falar no WhatsApp <i class="fab fa-whatsapp text-lg"></i>
                 </a>
             </div>
 
-            <hr class="border-white/10 mb-20">
+            <hr class="border-white/10 mb-16">
 
-            <div class="grid lg:grid-cols-3 gap-20">
+            <div class="grid lg:grid-cols-3 gap-12">
                 <!-- Info -->
                 <div class="reveal-up px-10">
                     <h3 class="font-serif text-3xl font-bold mb-8">LM <span class="italic text-accent">Studio</span></h3>
@@ -558,7 +579,7 @@
                 </div>
             </div>
 
-            <div class="mt-32 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="mt-20 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
                 <p class="text-[10px] text-gray-500">© 2026 LM Estética Studio. Todos os direitos reservados.</p>
                 <p class="text-[10px] text-gray-500 flex items-center gap-2 uppercase tracking-widest font-bold">Desenvolvido com excelência <span class="w-1 h-1 rounded-full bg-accent"></span> Impulsy.ai</p>
             </div>
