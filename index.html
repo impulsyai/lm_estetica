@@ -864,11 +864,12 @@
         function showTab(category, btn, userClick = true) {
             const container = document.getElementById('price-container');
             const btns = document.querySelectorAll('.tab-btn');
+            const isMobile = window.innerWidth < 1024;
             
             if(btn) {
                 btns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                if(userClick) {
+                if(userClick && isMobile) {
                     btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                 }
             }
@@ -906,8 +907,8 @@
                 
                 // Staggered reveal
                 gsap.fromTo(".service-row:not(.hidden)", 
-                    { opacity: 0, x: -10 }, 
-                    { opacity: 1, x: 0, duration: 0.5, stagger: 0.05, ease: "power2.out" }
+                    { opacity: 0, x: isMobile ? -10 : 0, y: isMobile ? 0 : 10 }, 
+                    { opacity: 1, x: 0, y: 0, duration: 0.5, stagger: 0.05, ease: "power2.out" }
                 );
                 gsap.to(container, { opacity: 1, y: 0, duration: 0.4 });
             }});
