@@ -344,15 +344,17 @@
     </nav>
 
     <!-- MOBILE MENU OVERLAY -->
-    <div id="mobile-menu" class="fixed inset-0 bg-primaryDark/95 backdrop-blur-xl z-[200] flex flex-col items-center justify-center gap-10 text-white transition-all duration-500 translate-x-full px-12">
-        <button onclick="toggleMenu()" class="absolute top-8 right-8 text-white/50 hover:text-white">
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[200] flex flex-col items-center justify-center gap-10 text-primary transition-all duration-500 translate-x-full px-12">
+        <button onclick="toggleMenu()" class="absolute top-8 right-8 text-primary/70 hover:text-primary transition-colors p-2">
             <span class="material-symbols-outlined text-4xl">close</span>
         </button>
-        <div class="font-serif text-3xl font-bold mb-4">LM<span class="text-accent italic">.</span></div>
-        <a href="#procedimentos" onclick="toggleMenu()" class="text-2xl font-serif hover:text-accent transition-colors">Procedimentos</a>
-        <a href="#equipe" onclick="toggleMenu()" class="text-2xl font-serif hover:text-accent transition-colors">Especialistas</a>
-        <a href="#transformacoes" onclick="toggleMenu()" class="text-2xl font-serif hover:text-accent transition-colors">Resultados</a>
-        <a href="https://api.whatsapp.com/message/C6XZSWTWFX52D1?autoload=1&app_absent=0" class="bg-accent text-primaryDark px-10 py-5 rounded-full font-black text-xs uppercase tracking-widest mt-4 shadow-2xl">Agendar Agora</a>
+        <div class="font-serif text-4xl font-bold mb-4">LM<span class="text-accent italic">.</span></div>
+        <div class="flex flex-col items-center gap-8">
+            <a href="#procedimentos" onclick="toggleMenu()" class="text-2xl font-serif text-primary hover:text-accent transition-all duration-300">Procedimentos</a>
+            <a href="#equipe" onclick="toggleMenu()" class="text-2xl font-serif text-primary hover:text-accent transition-all duration-300">Especialistas</a>
+            <a href="#transformacoes" onclick="toggleMenu()" class="text-2xl font-serif text-primary hover:text-accent transition-all duration-300">Resultados</a>
+        </div>
+        <a href="https://api.whatsapp.com/message/C6XZSWTWFX52D1?autoload=1&app_absent=0" class="bg-primary text-white px-10 py-5 rounded-full font-black text-xs uppercase tracking-[0.2em] mt-8 shadow-2xl hover:bg-primaryDark transition-all">Agendar Agora</a>
     </div>
 
     <!-- HERO SECTION -->
