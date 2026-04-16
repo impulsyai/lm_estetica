@@ -569,6 +569,13 @@
                     </h2>
                 </div>
 
+                <div class="relative max-w-md mx-auto mb-10 reveal-up">
+                    <span class="absolute left-5 top-1/2 -translate-y-1/2 material-symbols-outlined text-primary/40 text-xl">search</span>
+                    <input type="text" id="procedure-search" placeholder="Procurar procedimento (ex: laser, limpeza...)" 
+                           class="w-full bg-primary/5 border border-primary/10 rounded-2xl py-4 pl-14 pr-6 text-sm focus:outline-none focus:border-primary/30 transition-all font-medium"
+                           oninput="handleSearch(this.value)">
+                </div>
+
                 <div class="flex overflow-x-auto gap-3 mb-12 pb-6 no-scrollbar lg:justify-center border-b border-primary/5 px-6" id="tab-controls">
                     <button class="tab-btn whitespace-nowrap px-6 py-3.5 rounded-full border border-primary/10 text-[9px] font-bold uppercase tracking-[0.2em] transition-all cursor-hover" onclick="showTab('sobrancelha', this)">Sobrancelha</button>
                     <button class="tab-btn whitespace-nowrap px-6 py-3.5 rounded-full border border-primary/10 text-[9px] font-bold uppercase tracking-[0.2em] transition-all cursor-hover" onclick="showTab('remocao', this)">Laser</button>
@@ -862,7 +869,6 @@
         }
 
         function showTab(category, btn, userClick = true) {
-            const container = document.getElementById('price-container');
             const btns = document.querySelectorAll('.tab-btn');
             const isMobile = window.innerWidth < 1024;
             
@@ -872,13 +878,45 @@
                 if(userClick && isMobile) {
                     btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                 }
+                // Clear search if switching tabs
+                const searchInput = document.getElementById('procedure-search');
+                if(searchInput) searchInput.value = '';
             }
             
             const fullList = servicesData[category] || [];
+            renderResults(fullList);
+        }
+
+        function handleSearch(query) {
+            const btns = document.querySelectorAll('.tab-btn');
+            const cleanQuery = query.toLowerCase().trim();
+            
+            if (!cleanQuery) {
+                showTab('sobrancelha', document.querySelector('.tab-btn'), false);
+                return;
+            }
+
+            btns.forEach(b => b.classList.remove('active'));
+
+            let matches = [];
+            Object.keys(servicesData).forEach(cat => {
+                servicesData[cat].forEach(item => {
+                    if (item.name.toLowerCase().includes(cleanQuery) || item.desc.toLowerCase().includes(cleanQuery)) {
+                        matches.push(item);
+                    }
+                });
+            });
+
+            renderResults(matches, true);
+        }
+
+        function renderResults(list, isSearch = false) {
+            const container = document.getElementById('price-container');
+            const isMobile = window.innerWidth < 1024;
             
             gsap.to(container, { opacity: 0, y: 10, duration: 0.2, onComplete: () => {
-                let html = fullList.map((i, index) => `
-                    <div class="service-row block py-6 cursor-pointer group border-b border-primary/5 last:border-0 hover:bg-primary/[0.02] transition-colors rounded-xl px-4 -mx-4 ${index > 4 ? 'hidden extra-item' : ''}" 
+                let html = list.map((i, index) => `
+                    <div class="service-row block py-6 cursor-pointer group border-b border-primary/5 last:border-0 hover:bg-primary/[0.02] transition-colors rounded-xl px-4 -mx-4 ${!isSearch && index > 4 ? 'hidden extra-item' : ''}" 
                          onclick='openMorph(${JSON.stringify(i).replace(/'/g, "&apos;")})'>
                         <h4 class="font-black text-main text-sm md:text-base group-hover:text-primary transition-colors leading-tight mb-2 text-[13px] uppercase tracking-wide italic">${i.name}</h4>
                         <div class="flex items-center justify-between">
@@ -892,7 +930,7 @@
                     </div>
                 `).join('');
 
-                if (fullList.length > 5) {
+                if (!isSearch && list.length > 5) {
                     html += `
                         <div id="show-more-wrapper" class="col-span-full flex justify-center mt-12">
                             <button onclick="expandList()" class="flex items-center gap-2 text-primary text-[10px] font-black uppercase tracking-[0.3em] hover:opacity-70 transition-all group">
@@ -903,9 +941,8 @@
                     `;
                 }
 
-                container.innerHTML = html || '<p class="py-10 text-gray-400 text-center col-span-2 uppercase text-[10px] tracking-widest">Procedimentos em atualização...</p>';
+                container.innerHTML = html || `<p class="py-10 text-gray-400 text-center col-span-2 uppercase text-[10px] tracking-widest">${isSearch ? 'Nenhum procedimento encontrado.' : 'Procedimentos em atualização...'}</p>`;
                 
-                // Staggered reveal
                 gsap.fromTo(".service-row:not(.hidden)", 
                     { opacity: 0, x: isMobile ? -10 : 0, y: isMobile ? 0 : 10 }, 
                     { opacity: 1, x: 0, y: 0, duration: 0.5, stagger: 0.05, ease: "power2.out" }
