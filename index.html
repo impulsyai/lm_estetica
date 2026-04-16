@@ -178,12 +178,14 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         .marquee-content {
-            display: inline-block;
-            animation: marquee-scroll 40s linear infinite;
+            display: flex;
+            width: max-content;
+            animation: marquee-scroll 60s linear infinite;
+            will-change: transform;
         }
         @keyframes marquee-scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            100% { transform: translateX(-33.333%); }
         }
 
         /* 🌊 Parallax & Interactive Elements */
@@ -381,7 +383,9 @@
     <!-- EDITORIAL MARQUEE -->
     <div class="marquee-container">
         <div class="marquee-content">
-            TECNOLOGIA LASER • REMOÇÃO DE TATUAGEM • MICROPIGMENTAÇÃO • PEELING DE HOLLYWOOD • DESIGN DE SOBRANCELHA • HYDRA GLOSS • RESULTADOS DE ELITE • TECNOLOGIA LASER • REMOÇÃO DE TATUAGEM • MICROPIGMENTAÇÃO • PEELING DE HOLLYWOOD • DESIGN DE SOBRANCELHA • HYDRA GLOSS • RESULTADOS DE ELITE • 
+            <span class="inline-block px-10">TECNOLOGIA LASER • REMOÇÃO DE TATUAGEM • MICROPIGMENTAÇÃO • PEELING DE HOLLYWOOD • DESIGN DE SOBRANCELHA • HYDRA GLOSS • RESULTADOS DE ELITE •</span>
+            <span class="inline-block px-10">TECNOLOGIA LASER • REMOÇÃO DE TATUAGEM • MICROPIGMENTAÇÃO • PEELING DE HOLLYWOOD • DESIGN DE SOBRANCELHA • HYDRA GLOSS • RESULTADOS DE ELITE •</span>
+            <span class="inline-block px-10">TECNOLOGIA LASER • REMOÇÃO DE TATUAGEM • MICROPIGMENTAÇÃO • PEELING DE HOLLYWOOD • DESIGN DE SOBRANCELHA • HYDRA GLOSS • RESULTADOS DE ELITE •</span>
         </div>
     </div>
 
